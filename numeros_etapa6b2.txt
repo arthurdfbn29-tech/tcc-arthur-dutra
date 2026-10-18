@@ -1,0 +1,177 @@
+==============================================================================
+ETAPA 6B.2 - ARVORE DE DECISAO (CART)
+==============================================================================
+scikit-learn 1.7.2 | Gini | poda custo-complexidade | VC estratificada 10 partes no treino | 40 alfas avaliados
+
+------------------------------------------------------------------------------
+base_total: arvore completa = 17701 folhas | 2835 valores de alfa na sequencia de poda
+------------------------------------------------------------------------------
+    alfa    erro      ep  folhas
+0.000001 0.37540 0.00169   17699
+0.000001 0.37540 0.00169   17699
+0.000002 0.37540 0.00169   17699
+0.000002 0.37540 0.00169   17699
+0.000003 0.37540 0.00169   17699
+0.000003 0.37540 0.00169   17696
+0.000004 0.37542 0.00169   17685
+0.000005 0.37545 0.00169   17680
+0.000007 0.37521 0.00168   17657
+0.000008 0.37513 0.00169   17588
+0.000011 0.37474 0.00176   16391
+0.000013 0.37344 0.00156   14516
+0.000017 0.36400 0.00201   10655
+0.000022 0.35593 0.00184    7193
+0.000027 0.34235 0.00116    3627
+0.000035 0.32332 0.00147    1433
+0.000044 0.30535 0.00104     453
+0.000055 0.29677 0.00108     170
+0.000070 0.29501 0.00119      88
+0.000089 0.29354 0.00110      57
+0.000113 0.29308 0.00120      44
+0.000143 0.29333 0.00139      39
+0.000180 0.29352 0.00126      33
+0.000229 0.29552 0.00118      30
+0.000289 0.29726 0.00129      22
+0.000367 0.29693 0.00141      19
+0.000464 0.29836 0.00072      17
+0.000588 0.30172 0.00099      13
+0.000744 0.30462 0.00131      13
+0.000943 0.30610 0.00136      11
+0.001194 0.30703 0.00141      10
+0.001512 0.31047 0.00158       9
+0.001914 0.31119 0.00158       7
+0.002424 0.32096 0.00134       5
+0.003070 0.32096 0.00134       4
+0.003888 0.32096 0.00134       4
+0.004924 0.32096 0.00134       4
+0.006236 0.32096 0.00134       4
+0.007897 0.32096 0.00134       4
+0.010000 0.32096 0.00134       4
+(a) minimo: alfa=1.125e-04 erro=0.2931 (EP 0.0012) folhas=44
+(b) 1-EP : alfa=1.805e-04 erro=0.2935 (limite 0.2943) folhas=33
+limiar q = 0.4830
+  [minimo] folhas=44 profundidade=8
+     treino: acuracia=0.7106 precisao=0.6722 recall=0.7824 F1=0.7231 AUC=0.7848 | VP=23826 FP=11618 FN=6628 VN=20980
+     teste: acuracia=0.7084 precisao=0.6706 recall=0.7787 F1=0.7206 AUC=0.7812 | VP=10163 FP=4991 FN=2889 VN=8980
+     folhas com taxa de churn entre q e 0,5: 0 (0 clientes do treino)
+     importancia (reducao de Gini): Frequência (pedidos) 0.684; Status: novo 0.143; Recência (dias) 0.082; Status: retido 0.043; Ticket médio (R$) 0.022; Status: novo retornante 0.013; Status: reativado retornante 0.009; Idade válida 0.002; Exclusivo loja física 0.001; Exclusivo e-commerce 0.001
+  [1EP] folhas=33 profundidade=8
+     treino: acuracia=0.7097 precisao=0.6725 recall=0.7780 F1=0.7214 AUC=0.7829 | VP=23694 FP=11541 FN=6760 VN=21057
+     teste: acuracia=0.7087 precisao=0.6720 recall=0.7751 F1=0.7199 AUC=0.7799 | VP=10116 FP=4937 FN=2936 VN=9034
+     folhas com taxa de churn entre q e 0,5: 0 (0 clientes do treino)
+     importancia (reducao de Gini): Frequência (pedidos) 0.691; Status: novo 0.144; Recência (dias) 0.079; Status: retido 0.041; Ticket médio (R$) 0.021; Status: novo retornante 0.014; Status: reativado retornante 0.008; Idade válida 0.002
+  Regras (arvore 1-EP, 33 folhas; exibidas as 27 com >= 1% do treino), por taxa de churn:
+     churn  88.6% | n=  1709 ( 2.7%) | Frequência (pedidos) <= 2.50 E Status: novo = sim E Recência (dias) > 199.50 E Ticket médio (R$) <= 343.50
+     churn  80.6% | n=  5563 ( 8.8%) | Frequência (pedidos) <= 2.50 E Status: novo = sim E Recência (dias) > 199.50 E Ticket médio (R$) > 343.50
+     churn  74.9% | n=  5887 ( 9.3%) | Frequência (pedidos) <= 2.50 E Status: novo = sim E Recência (dias) <= 199.50 E Recência (dias) > 44.50
+     churn  73.6% | n=  1141 ( 1.8%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = não E Status: reativado retornante = não E Ticket médio (R$) <= 417.25
+     churn  68.5% | n=  2665 ( 4.2%) | Frequência (pedidos) <= 2.50 E Status: novo = sim E Recência (dias) <= 199.50 E Recência (dias) <= 44.50
+     churn  67.4% | n=   816 ( 1.3%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) > 173.50 E Status: novo retornante = sim
+     churn  65.2% | n=  4565 ( 7.2%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = não E Status: reativado retornante = não E Ticket médio (R$) > 417.25
+     churn  62.2% | n=   736 ( 1.2%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = não E Status: reativado retornante = não E Idade válida = não
+     churn  61.4% | n=  1909 ( 3.0%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = sim E Ticket médio (R$) <= 437.98
+     churn  55.3% | n=  1952 ( 3.1%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = não E Status: reativado retornante = não E Idade válida = sim E Recência (dias) > 66.50
+     churn  54.9% | n=  1027 ( 1.6%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = não E Status: reativado retornante = sim
+     churn  53.1% | n=   676 ( 1.1%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) <= 173.50 E Status: retido = não E Frequência (pedidos) <= 3.50 E Ticket médio (R$) <= 670.68
+     churn  51.9% | n=  4132 ( 6.6%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = sim E Ticket médio (R$) > 437.98 E Frequência (pedidos) <= 1.50
+     churn  51.4% | n=  1684 ( 2.7%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = não E Status: reativado retornante = não E Idade válida = sim E Recência (dias) <= 66.50 E Ticket médio (R$) <= 1378.60
+     churn  46.0% | n=   944 ( 1.5%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = sim E Frequência (pedidos) <= 1.50
+     churn  41.4% | n=  2138 ( 3.4%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = sim E Ticket médio (R$) > 437.98 E Frequência (pedidos) > 1.50
+     churn  40.3% | n=   919 ( 1.5%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = não E Status: reativado retornante = não E Idade válida = sim E Recência (dias) <= 66.50 E Ticket médio (R$) > 1378.60
+     churn  39.4% | n=  1340 ( 2.1%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = não E Status: reativado retornante = sim
+     churn  39.3% | n=  1319 ( 2.1%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) <= 173.50 E Status: retido = não E Frequência (pedidos) <= 3.50 E Ticket médio (R$) > 670.68
+     churn  39.3% | n=   765 ( 1.2%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) <= 173.50 E Status: retido = não E Frequência (pedidos) > 3.50 E Recência (dias) > 65.50
+     churn  36.4% | n=  2263 ( 3.6%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) > 173.50 E Status: novo retornante = não E Ticket médio (R$) > 310.63 E Recência (dias) <= 294.50
+     churn  34.3% | n=  1832 ( 2.9%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = sim E Frequência (pedidos) > 1.50
+     churn  23.7% | n=  1062 ( 1.7%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) <= 173.50 E Status: retido = não E Frequência (pedidos) > 3.50 E Recência (dias) <= 65.50
+     churn  21.2% | n=  4879 ( 7.7%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) <= 173.50 E Status: retido = sim
+     churn  15.8% | n=  1743 ( 2.8%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) > 5.50 E Recência (dias) > 90.50 E Recência (dias) <= 207.50 E Ticket médio (R$) > 308.08 E Status: retido = sim
+     churn   9.5% | n=  3955 ( 6.3%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) > 5.50 E Recência (dias) <= 90.50 E Frequência (pedidos) <= 10.50
+     churn   2.3% | n=  3945 ( 6.3%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) > 5.50 E Recência (dias) <= 90.50 E Frequência (pedidos) > 10.50
+  cobertura das folhas exibidas: 97.6% do treino
+
+------------------------------------------------------------------------------
+base_sem_outliers: arvore completa = 17685 folhas | 2800 valores de alfa na sequencia de poda
+------------------------------------------------------------------------------
+    alfa    erro      ep  folhas
+0.000001 0.37992 0.00187   17684
+0.000001 0.37992 0.00187   17684
+0.000002 0.37992 0.00187   17684
+0.000002 0.37992 0.00187   17684
+0.000003 0.37992 0.00187   17682
+0.000003 0.37992 0.00187   17680
+0.000004 0.37990 0.00187   17677
+0.000005 0.37987 0.00187   17673
+0.000007 0.37979 0.00191   17636
+0.000008 0.37974 0.00192   17555
+0.000011 0.37924 0.00193   16886
+0.000013 0.37749 0.00189   14944
+0.000017 0.37018 0.00207   10747
+0.000022 0.36425 0.00183    7246
+0.000027 0.34916 0.00220    3784
+0.000035 0.32983 0.00210    1597
+0.000044 0.31186 0.00212     480
+0.000055 0.30127 0.00181     178
+0.000070 0.29828 0.00196      87
+0.000089 0.29718 0.00146      62
+0.000113 0.29620 0.00154      47
+0.000143 0.29608 0.00157      39
+0.000180 0.29647 0.00161      31
+0.000229 0.29873 0.00170      26
+0.000289 0.29904 0.00147      22
+0.000367 0.29957 0.00154      20
+0.000464 0.30241 0.00179      15
+0.000588 0.30600 0.00197      14
+0.000744 0.30642 0.00202      13
+0.000943 0.30965 0.00135      11
+0.001194 0.30992 0.00132      10
+0.001512 0.31441 0.00134       9
+0.001914 0.31452 0.00140       7
+0.002424 0.32361 0.00196       5
+0.003070 0.32494 0.00125       4
+0.003888 0.32494 0.00125       4
+0.004924 0.32494 0.00125       4
+0.006236 0.32494 0.00125       4
+0.007897 0.32494 0.00125       4
+0.010000 0.32494 0.00125       3
+(a) minimo: alfa=1.425e-04 erro=0.2961 (EP 0.0016) folhas=39
+(b) 1-EP : alfa=1.805e-04 erro=0.2965 (limite 0.2977) folhas=31
+limiar q = 0.4861
+  [minimo] folhas=39 profundidade=7
+     treino: acuracia=0.7065 precisao=0.6729 recall=0.7711 F1=0.7186 AUC=0.7792 | VP=23214 FP=11287 FN=6891 VN=20540
+     teste: acuracia=0.7052 precisao=0.6718 recall=0.7692 F1=0.7172 AUC=0.7752 | VP=9925 FP=4848 FN=2978 VN=8792
+     folhas com taxa de churn entre q e 0,5: 0 (0 clientes do treino)
+     importancia (reducao de Gini): Frequência (pedidos) 0.678; Status: novo 0.148; Recência (dias) 0.086; Status: retido 0.046; Ticket médio (R$) 0.019; Status: novo retornante 0.012; Status: reativado retornante 0.008; Idade válida 0.003; Idade 0.001
+  [1EP] folhas=31 profundidade=7
+     treino: acuracia=0.7065 precisao=0.6729 recall=0.7711 F1=0.7186 AUC=0.7776 | VP=23214 FP=11287 FN=6891 VN=20540
+     teste: acuracia=0.7052 precisao=0.6718 recall=0.7692 F1=0.7172 AUC=0.7746 | VP=9925 FP=4848 FN=2978 VN=8792
+     folhas com taxa de churn entre q e 0,5: 0 (0 clientes do treino)
+     importancia (reducao de Gini): Frequência (pedidos) 0.686; Status: novo 0.150; Recência (dias) 0.082; Status: retido 0.045; Ticket médio (R$) 0.018; Status: novo retornante 0.012; Status: reativado retornante 0.008
+  Regras (arvore 1-EP, 31 folhas; exibidas as 24 com >= 1% do treino), por taxa de churn:
+     churn  86.8% | n=  2381 ( 3.8%) | Frequência (pedidos) <= 2.50 E Status: novo = sim E Recência (dias) > 199.50 E Ticket médio (R$) <= 479.10
+     churn  80.2% | n=  4688 ( 7.6%) | Frequência (pedidos) <= 2.50 E Status: novo = sim E Recência (dias) > 199.50 E Ticket médio (R$) > 479.10
+     churn  74.7% | n=  5832 ( 9.4%) | Frequência (pedidos) <= 2.50 E Status: novo = sim E Recência (dias) <= 199.50 E Recência (dias) > 44.50
+     churn  73.9% | n=  1214 ( 2.0%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = não E Status: reativado retornante = não E Ticket médio (R$) <= 438.73
+     churn  68.8% | n=  2615 ( 4.2%) | Frequência (pedidos) <= 2.50 E Status: novo = sim E Recência (dias) <= 199.50 E Recência (dias) <= 44.50
+     churn  65.0% | n=  4464 ( 7.2%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = não E Status: reativado retornante = não E Ticket médio (R$) > 438.73
+     churn  61.6% | n=  1835 ( 3.0%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = sim E Ticket médio (R$) <= 431.65
+     churn  55.2% | n=  1042 ( 1.7%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = não E Status: reativado retornante = sim
+     churn  55.1% | n=  3402 ( 5.5%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = não E Status: reativado retornante = não E Ticket médio (R$) <= 1396.50
+     churn  54.3% | n=   832 ( 1.3%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = não E Status: reativado retornante = não E Ticket médio (R$) > 1396.50 E Recência (dias) > 66.50
+     churn  51.8% | n=  4168 ( 6.7%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = sim E Ticket médio (R$) > 431.65 E Frequência (pedidos) <= 1.50
+     churn  44.7% | n=   962 ( 1.6%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = sim E Frequência (pedidos) <= 1.50
+     churn  42.4% | n=  1041 ( 1.7%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = não E Status: reativado retornante = não E Ticket médio (R$) > 1396.50 E Recência (dias) <= 66.50
+     churn  41.8% | n=  2147 ( 3.5%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) > 153.50 E Status: retido = sim E Ticket médio (R$) > 431.65 E Frequência (pedidos) > 1.50
+     churn  40.6% | n=  1552 ( 2.5%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) <= 173.50 E Status: retido = não E Frequência (pedidos) <= 3.50 E Ticket médio (R$) > 529.64
+     churn  39.4% | n=  1341 ( 2.2%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = não E Status: reativado retornante = sim
+     churn  38.3% | n=   716 ( 1.2%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) <= 173.50 E Status: retido = não E Frequência (pedidos) > 3.50 E Recência (dias) > 68.50
+     churn  36.2% | n=  2221 ( 3.6%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) > 173.50 E Status: novo retornante = não E Recência (dias) <= 294.50 E Ticket médio (R$) > 333.70
+     churn  33.9% | n=  1811 ( 2.9%) | Frequência (pedidos) <= 2.50 E Status: novo = não E Recência (dias) <= 153.50 E Status: retido = sim E Frequência (pedidos) > 1.50
+     churn  23.8% | n=  1185 ( 1.9%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) > 5.50 E Recência (dias) > 130.50 E Status: retido = sim
+     churn  23.3% | n=  1063 ( 1.7%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) <= 173.50 E Status: retido = não E Frequência (pedidos) > 3.50 E Recência (dias) <= 68.50
+     churn  21.5% | n=  4886 ( 7.9%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) <= 5.50 E Recência (dias) <= 173.50 E Status: retido = sim
+     churn  11.6% | n=  4036 ( 6.5%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) > 5.50 E Recência (dias) <= 130.50 E Frequência (pedidos) <= 9.50
+     churn   3.8% | n=  4287 ( 6.9%) | Frequência (pedidos) > 2.50 E Frequência (pedidos) > 5.50 E Recência (dias) <= 130.50 E Frequência (pedidos) > 9.50
+  cobertura das folhas exibidas: 96.4% do treino
+
+[figuras] etapa6b2_validacao_cruzada.png, etapa6b2_arvore.png, etapa6b2_importancia.png

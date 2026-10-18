@@ -1,0 +1,58 @@
+==============================================================================
+ETAPA 6A.1 - K-MEANS
+==============================================================================
+scikit-learn 1.7.2 | init=random | n_init=20 | algoritmo de Lloyd | parada: atribuicoes estaveis (tol=0, max_iter=1000)
+Silhueta: media exata sobre todos os clientes (sem amostragem)
+
+--- base_total (90.075 clientes) ---
+  k         SSE  reducao%  silhueta  inits=melhor iter_max  tamanhos
+  2    178992.5              0.3294       20/20       35  [45582, 44493]
+  3    138763.7      22.5    0.2981       20/20       57  [34794, 32204, 23077]
+  4    114842.9      17.2    0.2899       20/20      155  [25730, 23627, 21618, 19100]
+  5     97944.8      14.7    0.2957        1/20      119  [25355, 21702, 21632, 21084, 302]
+  6     85752.3      12.4    0.2819        2/20      192  [20182, 19357, 18064, 17024, 15160, 288]
+  7     76092.8      11.3    0.2929        8/20      135  [16404, 16254, 15481, 15413, 13401, 12834, 288]
+  8     68749.3       9.7    0.2819        1/20      151  [16061, 13948, 13791, 13334, 13168, 12052, 7456, 265]
+  9     62807.2       8.6    0.2797        3/20      133  [14580, 13142, 12997, 12718, 10951, 9248, 8811, 7391, 237]
+ 10     57439.8       8.5    0.2817        8/20      131  [13520, 12487, 11972, 11753, 11565, 10129, 10125, 7124, 1246, 154]
+k escolhido (maior silhueta, k>=3): 3  (silhueta k=2: 0.3294)
+  Clusters (ordenados por tamanho) e centroides no espaco padronizado:
+    C1: n= 34794 ( 38.6%)  z_rec=+1.01  z_lnF=-0.53  z_lnTM=-0.42
+    C2: n= 32204 ( 35.8%)  z_rec=-0.52  z_lnF=-0.43  z_lnTM=+0.41
+    C3: n= 23077 ( 25.6%)  z_rec=-0.80  z_lnF=+1.40  z_lnTM=+0.07
+  [rotulos] rotulos_kmeans_base_total.csv
+
+--- base_sem_outliers (88.475 clientes) ---
+  k         SSE  reducao%  silhueta  inits=melhor iter_max  tamanhos
+  2    175362.6              0.3141       20/20       36  [44391, 44084]
+  3    131504.6      25.0    0.2990       20/20       67  [31633, 31222, 25620]
+  4    106325.6      19.1    0.2928       20/20      127  [23249, 23204, 21434, 20588]
+  5     90852.4      14.6    0.2841       20/20       82  [19586, 18622, 17603, 16673, 15991]
+  6     81190.5      10.6    0.2944       15/20      125  [16209, 15854, 15464, 15022, 13893, 12033]
+  7     73970.2       8.9    0.2794        3/20      144  [15938, 15177, 13189, 12286, 11698, 11228, 8959]
+  8     67008.5       9.4    0.2722        2/20      154  [14803, 12297, 11526, 11366, 11244, 9176, 9047, 9016]
+  9     61525.4       8.2    0.2766        4/20      142  [13140, 11535, 10942, 9440, 9377, 9003, 8609, 8391, 8038]
+ 10     56771.5       7.7    0.2761        4/20      152  [10963, 10360, 10332, 9684, 8957, 8756, 8548, 7773, 7338, 5764]
+k escolhido (maior silhueta, k>=3): 3  (silhueta k=2: 0.3141)
+  Clusters (ordenados por tamanho) e centroides no espaco padronizado:
+    C1: n= 31633 ( 35.8%)  z_rec=+0.84  z_lnF=-0.54  z_lnTM=-0.75
+    C2: n= 31222 ( 35.3%)  z_rec=-0.19  z_lnF=-0.49  z_lnTM=+0.76
+    C3: n= 25620 ( 29.0%)  z_rec=-0.81  z_lnF=+1.27  z_lnTM=+0.00
+  [rotulos] rotulos_kmeans_base_sem_outliers.csv
+
+SENSIBILIDADE: alocacao do top 1% de valor acumulado, k = 3..7
+--- base_total (top 1% = 901 clientes)
+  k=3: cluster do top1% n=23077 | top1% nele=896 (99.4% do top) | peso no cluster=3.9% | clusters com freq. mediana = 1: 2 | tamanhos [34794, 32204, 23077]
+  k=4: cluster do top1% n=21618 | top1% nele=897 (99.6% do top) | peso no cluster=4.1% | clusters com freq. mediana = 1: 3 | tamanhos [25730, 23627, 21618, 19100]
+  k=5: cluster do top1% n=21632 | top1% nele=897 (99.6% do top) | peso no cluster=4.1% | clusters com freq. mediana = 1: 3 | tamanhos [25355, 21702, 21632, 21084, 302]
+  k=6: cluster do top1% n=19357 | top1% nele=890 (98.8% do top) | peso no cluster=4.6% | clusters com freq. mediana = 1: 3 | tamanhos [20182, 19357, 18064, 17024, 15160, 288]
+  k=7: cluster do top1% n=16254 | top1% nele=890 (98.8% do top) | peso no cluster=5.5% | clusters com freq. mediana = 1: 4 | tamanhos [16404, 16254, 15481, 15413, 13401, 12834, 288]
+--- base_sem_outliers (top 1% = 885 clientes)
+  k=3: cluster do top1% n=25620 | top1% nele=850 (96.0% do top) | peso no cluster=3.3% | clusters com freq. mediana = 1: 2 | tamanhos [31633, 31222, 25620]
+  k=4: cluster do top1% n=21434 | top1% nele=857 (96.8% do top) | peso no cluster=4.0% | clusters com freq. mediana = 1: 3 | tamanhos [23249, 23204, 21434, 20588]
+  k=5: cluster do top1% n=18622 | top1% nele=836 (94.5% do top) | peso no cluster=4.5% | clusters com freq. mediana = 1: 2 | tamanhos [19586, 18622, 17603, 16673, 15991]
+  k=6: cluster do top1% n=15464 | top1% nele=830 (93.8% do top) | peso no cluster=5.4% | clusters com freq. mediana = 1: 3 | tamanhos [16209, 15854, 15464, 15022, 13893, 12033]
+  k=7: cluster do top1% n=8959 | top1% nele=640 (72.3% do top) | peso no cluster=7.1% | clusters com freq. mediana = 1: 4 | tamanhos [15938, 15177, 13189, 12286, 11698, 11228, 8959]
+
+[figura] etapa6a1_cotovelo_silhueta.png
+[figura] etapa6a1_clusters_projecoes.png

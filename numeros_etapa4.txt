@@ -1,0 +1,186 @@
+==============================================================================
+ETAPA 4 - ANALISE EXPLORATORIA DOS DADOS
+==============================================================================
+Data de corte para recencia: 2024-12-31
+
+base_total      :  90075 clientes x 42 colunas (com derivadas)
+base_sem_outliers:  88475 clientes x 42 colunas (com derivadas)
+
+------------------------------------------------------------------------------
+[1] PANORAMA GERAL
+------------------------------------------------------------------------------
+  base_total
+    Clientes ................ 90.075
+    Receita total ........... R$ 416.889.064,06
+    VA mediano por cliente .. R$ 1.794,00
+    Ticket medio (mediana) .. R$ 907,00
+    Frequencia mediana ...... 2 (media 3.88)
+    Recencia mediana ........ 144 dias
+    Taxa de churn ........... 48.3%
+    Multicanal .............. 26.3%
+    Estados representados ... 27
+
+  base_sem_outliers
+    Clientes ................ 88.475
+    Receita total ........... R$ 341.605.334,64
+    VA mediano por cliente .. R$ 1.782,00
+    Ticket medio (mediana) .. R$ 905,54
+    Frequencia mediana ...... 2 (media 3.44)
+    Recencia mediana ........ 146 dias
+    Taxa de churn ........... 48.6%
+    Multicanal .............. 25.8%
+    Estados representados ... 27
+
+------------------------------------------------------------------------------
+[2] ESTATISTICAS DESCRITIVAS (base_total)
+------------------------------------------------------------------------------
+                      n    media        dp    cv    min     p25  mediana      p75       p90       p99        max  assimetria  curtose
+variavel                                                                                                                             
+VA_bruto_total    90075  4628.24  11175.07  2.41   0.01  777.00   1794.0  4379.90  10225.92  44531.90  574023.09       13.32   348.39
+Frequencia_total  90075     3.88      7.40  1.91   1.00    1.00      2.0     4.00      8.00     34.00     279.00        9.29   169.29
+TM_total          90075  1197.80   1110.80  0.93   0.00  544.31    907.0  1492.43   2329.93   5452.05   31969.37        4.23    40.13
+recencia          90075   149.58    108.36  0.72   0.00   42.00    144.0   232.00    314.00    360.00     365.00        0.34    -1.10
+idade_fim_2024    78717    38.09     12.34  0.32  10.00   29.00     37.0    45.00     55.00     71.00      98.00        0.54     0.33
+
+  Leitura: assimetria alta em VA/Frequencia indica cauda direita longa;
+  e o argumento quantitativo para transformacao logaritmica antes do K-means.
+
+------------------------------------------------------------------------------
+[3] FIGURAS
+------------------------------------------------------------------------------
+    [figura] aed_distribuicao_monetario.png
+    [figura] aed_boxplot_grupos.png
+    [figura] aed_frequencia_recencia.png
+    [figura] aed_concentracao_receita.png
+
+  Concentracao da receita (base_total):
+    top  1% dos clientes -> 18.0% da receita
+    top  5% dos clientes -> 40.3% da receita
+    top 10% dos clientes -> 54.4% da receita
+    top 20% dos clientes -> 70.5% da receita
+    top 50% dos clientes -> 91.0% da receita
+    indice de Gini da receita: 0.666
+
+    [figura] aed_canais.png
+  Perfil por canal (base_total):
+                     clientes      receita  churn  va_mediano  freq_mediana  pct_clientes  pct_receita
+canais_cliente                                                                                        
+Multicanal              23677  265518291.0   0.22     5866.00           5.0         26.29        63.69
+Exclusivo Varejo        35614   89865411.0   0.59     1456.60           1.0         39.54        21.56
+Exclusivo Ecommerce     30784   61505362.0   0.56      988.08           1.0         34.18        14.75
+
+    [figura] aed_perfil_geografia.png
+  Idade: mediana 37 | media 38.1 | P25 29 | P75 45
+  Concentracao geografica: top 3 estados = 56.8% dos clientes
+  Top 5: SP (36.7%), RJ (11.5%), MG (8.7%), PR (5.8%), GO (4.6%)
+
+    [figura] aed_churn_painel.png
+  Churn por recencia:
+faixa_recencia
+0-30       29.2
+31-90      33.9
+91-180     47.8
+181-270    60.4
+271-365    68.6
+  Churn por frequencia:
+faixa_freq
+1       67.6
+2       49.3
+3       39.7
+4-5     27.9
+6-10    14.9
+11+      4.3
+  Churn por quintil VA:
+faixa_va
+Q1 (menor)    70.4
+Q2            63.1
+Q3            53.4
+Q4            38.5
+Q5 (maior)    16.1
+  Churn por status:
+status_exibicao
+Novo                    77.2
+Novo Retornante         50.2
+Reativado               59.9
+Reativado Retornante    37.4
+Retido                  29.3
+
+  Churn por grupo de outlier:
+                   size  mean
+flag_outlier                 
+Normal            88475  48.6
+Outlier Inferior    692  70.2
+Outlier Superior    908   1.3
+
+    [figura] aed_correlacao.png
+  Matriz de correlacao de Spearman:
+                  VA_bruto_total  Frequencia_total  TM_total  recencia  Qtd_bruta_total  tempo_vida_2024  idade_fim_2024  churn
+VA_bruto_total              1.00              0.74      0.70     -0.42             0.86             0.71            0.07  -0.39
+Frequencia_total            0.74              1.00      0.09     -0.44             0.82             0.91            0.02  -0.43
+TM_total                    0.70              0.09      1.00     -0.17             0.43             0.12            0.08  -0.13
+recencia                   -0.42             -0.44     -0.17      1.00            -0.38            -0.50           -0.02   0.30
+Qtd_bruta_total             0.86              0.82      0.43     -0.38             1.00             0.78            0.02  -0.40
+tempo_vida_2024             0.71              0.91      0.12     -0.50             0.78             1.00            0.01  -0.43
+idade_fim_2024              0.07              0.02      0.08     -0.02             0.02             0.01            1.00   0.01
+churn                      -0.39             -0.43     -0.13      0.30            -0.40            -0.43            0.01   1.00
+
+  IDENTIDADE ALGEBRICA VA = Frequencia x TM:
+    erro relativo mediano: 0.00e+00
+    clientes com erro < 0,1%: 100.00%
+    correlacao Spearman VA x (Freq x TM): 1.0000
+    -> as tres variaveis NAO sao independentes; usar as tres no K-means
+       equivale a ponderar a dimensao monetaria duas vezes.
+
+    [figura] aed_sazonalidade.png
+  Sazonalidade - clientes por mes do primeiro pedido:
+Jan    20569
+Fev     8211
+Mar     8969
+Abr     7887
+Mai     6713
+Jun    10351
+Jul     6146
+Ago     4358
+Set     3743
+Out     3391
+Nov     5121
+Dez     4616
+
+------------------------------------------------------------------------------
+[4] INFORMATION VALUE -- MATERIAL DA ETAPA 5B, nao da AED
+------------------------------------------------------------------------------
+  O IV e uma tecnica de SELECAO/TRATAMENTO de variaveis, nao de
+  exploracao. Fica calculado aqui por conveniencia, mas o texto
+  correspondente pertence a Etapa 5B (engenharia de variaveis).
+
+  Referencia (Siddiqi): <0,02 sem poder | 0,02-0,1 fraco |
+  0,1-0,3 medio | 0,3-0,5 forte | >0,5 suspeito de redundancia
+
+    Frequência (faixas)          IV = 0.974   (muito forte (verificar redundancia))
+    Valor monetário (quintis)    IV = 0.684   (muito forte (verificar redundancia))
+    Status do cliente            IV = 0.682   (muito forte (verificar redundancia))
+    Recompra em 365 dias         IV = 0.601   (muito forte (verificar redundancia))
+    Canais do cliente            IV = 0.425   (forte)
+    Recompra em 90 dias          IV = 0.377   (forte)
+    Recência (faixas)            IV = 0.348   (forte)
+    Grupo de outlier             IV = 0.087   (fraco)
+    Faixa de idade               IV = 0.049   (fraco)
+    Canal favorito               IV = 0.000   (sem poder)
+
+    [figura] aed_information_value.png
+------------------------------------------------------------------------------
+[5] BALANCEAMENTO DA VARIAVEL-ALVO
+------------------------------------------------------------------------------
+  base_total           churn=1: 43.506 (48.3%) | churn=0: 46.569 (51.7%) | razao 0.93:1
+  base_sem_outliers    churn=1: 43.008 (48.6%) | churn=0: 45.467 (51.4%) | razao 0.95:1
+
+  Alvo praticamente balanceado -> dispensa reamostragem (SMOTE/undersampling).
+
+------------------------------------------------------------------------------
+[6] PERFIL POR GRUPO DE OUTLIER (base_total)
+------------------------------------------------------------------------------
+                      n  churn  va_mediano  freq_mediana  tm_mediano  recencia_mediana  multicanal       receita  pct_clientes  pct_receita
+flag_outlier                                                                                                                               
+Normal            88475  48.61     1782.00           2.0      905.54             146.0       25.81  3.416053e+08         98.22        81.94
+Outlier Inferior    692  70.23       53.10           1.0       28.38             205.0        0.00  3.353247e+04          0.77         0.01
+Outlier Superior    908   1.32    64582.23          40.0     1844.73              12.0       93.06  7.525020e+07          1.01        18.05

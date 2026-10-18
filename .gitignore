@@ -1,0 +1,13 @@
+# Dados brutos e sensiveis - NUNCA versionar
+*.xlsx
+*.xls
+*.csv
+dados/
+base_total.csv
+base_sem_outliers.csv
+
+# Ambiente / cache
+__pycache__/
+*.pyc
+.venv/
+venv/

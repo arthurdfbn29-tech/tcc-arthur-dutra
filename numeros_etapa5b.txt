@@ -1,0 +1,106 @@
+==============================================================================
+ETAPA 5B - DEFINICAO DE CHURN E ENGENHARIA DE VARIAVEIS
+==============================================================================
+scikit-learn 1.7.2 | teste=0.3 | semente=42 | estratificado por churn
+
+[1] ALVO (base total)
+  churn=1: 43.506 (48.3%) | churn=0: 46.569
+
+[2] RECOMPRA EM 90 DIAS - 3 categorias (base total)
+  primeira compra >= 2024-10-03 (janela truncada): 12.948 (14.4%)
+  Janela incompleta  n=10.381 (11.5%) | churn 61.5%
+  Nao recomprou      n=45.480 (50.5%) | churn 59.7%
+  Recomprou          n=34.214 (38.0%) | churn 29.2%
+  entre os de janela truncada, recompra observada: 19.8% | janela completa: 41.0%
+
+[3] INFORMATION VALUE (base total) - faixas de Siddiqi (2006)
+  Frequência (faixas)                  IV = 0.974  (muito alto)
+  Valor acumulado (quintis)            IV = 0.684  (muito alto)
+  Status do cliente                    IV = 0.682  (muito alto)
+  Recompra em 365 dias                 IV = 0.601  (muito alto)
+  Canais do cliente                    IV = 0.425  (forte)
+  Recompra em 90 dias (3 categorias)   IV = 0.377  (forte)
+  Recompra em 90 dias (original)       IV = 0.377  (forte)
+  Recência (faixas)                    IV = 0.348  (forte)
+  Ticket médio (quintis)               IV = 0.091  (fraco)
+  Grupo de outlier                     IV = 0.087  (fraco)
+  Faixa de idade                       IV = 0.049  (fraco)
+  Estado                               IV = 0.013  (sem poder)
+  Canal favorito                       IV = 0.000  (sem poder)
+  [figura] etapa5b_information_value.png
+
+==============================================================================
+[4] DIVISAO TREINO/TESTE - base_total
+==============================================================================
+  total 90.075 | treino 63.052 (70.0%) | teste 27.023 (30.0%)
+  Verificacao do equilibrio:
+                                         Treino    Teste     Base
+  Taxa de churn (%)                       48.30    48.30    48.30
+  Recência mediana (dias)                144.50   144.00   144.00
+  Frequência mediana                       2.00     2.00     2.00
+  Frequência média                         3.87     3.90     3.88
+  Ticket mediano (R$)                    904.90   909.00   907.00
+  Valor acumulado mediano (R$)          1785.00  1796.40  1794.00
+  Multicanal (%)                          26.27    26.32    26.29
+  Exclusivo varejo (%)                    39.48    39.67    39.54
+  Status retido (%)                       42.36    42.04    42.26
+  Status novo (%)                         25.36    25.15    25.29
+  Recompra 90d - recomprou (%)            37.96    38.03    37.98
+  Recompra 90d - janela incompleta (%)    11.58    11.41    11.52
+  Idade valida (%)                        87.44    87.27    87.39
+  Outlier superior (%)                     1.02     0.98     1.01
+  mediana da idade (treino, registros validos) = 37 anos
+  Parametros do escore-z (treino):
+    recencia         media=149.6034 desvio=108.4929
+    ln_frequencia    media=0.7723 desvio=0.9217
+    ln_ticket        media=6.7602 desvio=0.9261
+    idade_ajustada   media=37.9263 desvio=11.5686
+  Categorias de referencia (logistica): canais_cliente = Multicanal, status = RETIDO, recompra90 = Recomprou
+  Matriz da logistica: 13 preditores -> ['z_recencia', 'z_ln_frequencia', 'z_ln_ticket', 'z_idade_ajustada', 'idade_valida', 'canais_cliente=Exclusivo Ecommerce', 'canais_cliente=Exclusivo Varejo', 'status=NOVO', 'status=NOVO RETORNANTE', 'status=REATIVADO', 'status=REATIVADO RETORNANTE', 'recompra90=Janela incompleta', 'recompra90=Nao recomprou']
+  Matriz da arvore: 16 preditores -> ['recencia', 'Frequencia_total', 'TM_total', 'idade_ajustada', 'idade_valida', 'canais_cliente=Exclusivo Ecommerce', 'canais_cliente=Exclusivo Varejo', 'canais_cliente=Multicanal', 'status=NOVO', 'status=NOVO RETORNANTE', 'status=REATIVADO', 'status=REATIVADO RETORNANTE', 'status=RETIDO', 'recompra90=Janela incompleta', 'recompra90=Nao recomprou', 'recompra90=Recomprou']
+  Maiores correlacoes entre preditores da logistica (treino, Pearson):
+    canais_cliente=Exclusivo Ecommerce x canais_cliente=Exclusivo Varejo: -0.583
+    z_ln_frequencia x recompra90=Nao recomprou: -0.505
+    z_ln_frequencia x status=NOVO: -0.473
+    z_recencia x recompra90=Nao recomprou: +0.469
+    z_recencia x z_ln_frequencia: -0.450
+    z_recencia x recompra90=Janela incompleta: -0.371
+  [matrizes] 5b_base_total_*.csv (4 arquivos)
+
+==============================================================================
+[4] DIVISAO TREINO/TESTE - base_sem_outliers
+==============================================================================
+  total 88.475 | treino 61.932 (70.0%) | teste 26.543 (30.0%)
+  Verificacao do equilibrio:
+                                         Treino    Teste     Base
+  Taxa de churn (%)                       48.61    48.61    48.61
+  Recência mediana (dias)                147.00   146.00   146.00
+  Frequência mediana                       2.00     2.00     2.00
+  Frequência média                         3.44     3.45     3.44
+  Ticket mediano (R$)                    902.54   909.50   905.54
+  Valor acumulado mediano (R$)          1774.00  1796.00  1782.00
+  Multicanal (%)                          25.74    25.96    25.81
+  Exclusivo varejo (%)                    39.55    39.91    39.66
+  Status retido (%)                       42.07    41.39    41.87
+  Status novo (%)                         25.28    25.57    25.37
+  Recompra 90d - recomprou (%)            37.49    37.37    37.45
+  Recompra 90d - janela incompleta (%)    11.69    11.50    11.63
+  Idade valida (%)                        87.44    87.06    87.33
+  Outlier superior (%)                     0.00     0.00     0.00
+  mediana da idade (treino, registros validos) = 37 anos
+  Parametros do escore-z (treino):
+    recencia         media=150.5656 desvio=107.9875
+    ln_frequencia    media=0.7445 desvio=0.8777
+    ln_ticket        media=6.7890 desvio=0.7783
+    idade_ajustada   media=37.9426 desvio=11.5581
+  Categorias de referencia (logistica): canais_cliente = Multicanal, status = RETIDO, recompra90 = Recomprou
+  Matriz da logistica: 13 preditores -> ['z_recencia', 'z_ln_frequencia', 'z_ln_ticket', 'z_idade_ajustada', 'idade_valida', 'canais_cliente=Exclusivo Ecommerce', 'canais_cliente=Exclusivo Varejo', 'status=NOVO', 'status=NOVO RETORNANTE', 'status=REATIVADO', 'status=REATIVADO RETORNANTE', 'recompra90=Janela incompleta', 'recompra90=Nao recomprou']
+  Matriz da arvore: 16 preditores -> ['recencia', 'Frequencia_total', 'TM_total', 'idade_ajustada', 'idade_valida', 'canais_cliente=Exclusivo Ecommerce', 'canais_cliente=Exclusivo Varejo', 'canais_cliente=Multicanal', 'status=NOVO', 'status=NOVO RETORNANTE', 'status=REATIVADO', 'status=REATIVADO RETORNANTE', 'status=RETIDO', 'recompra90=Janela incompleta', 'recompra90=Nao recomprou', 'recompra90=Recomprou']
+  Maiores correlacoes entre preditores da logistica (treino, Pearson):
+    canais_cliente=Exclusivo Ecommerce x canais_cliente=Exclusivo Varejo: -0.590
+    z_ln_frequencia x recompra90=Nao recomprou: -0.503
+    z_ln_frequencia x status=NOVO: -0.480
+    z_recencia x recompra90=Nao recomprou: +0.461
+    z_recencia x z_ln_frequencia: -0.438
+    z_recencia x recompra90=Janela incompleta: -0.378
+  [matrizes] 5b_base_sem_outliers_*.csv (4 arquivos)

@@ -1,0 +1,116 @@
+==============================================================================
+PERFIL DOS CLUSTERS - BASE TOTAL (90.075 clientes)
+==============================================================================
+
+C1: n=34.794 (38.6%) | receita 10.0% | churn 65.9%
+  medianas: recencia 259 d | frequencia 1 | ticket R$ 617.26 | VA R$ 800.00
+  quartis: recencia 207-317 | freq 1-2 | ticket 374-1016
+  % com 1 pedido: 69.7% | canais: multicanal 9.3% varejo 42.8% ecom 47.8% | idade mediana 36
+  status: RETIDO 36.5%, NOVO 36.2%, REATIVADO 14.6%, NOVO RETORNANTE 8.1%, REATIVADO RETORNANTE 4.5%
+  outliers: {'Normal': 34179, 'Outlier Inferior': 615}
+
+C2: n=32.204 (35.8%) | receita 20.8% | churn 52.6%
+  medianas: recencia 83 d | frequencia 1 | ticket R$ 1258.17 | VA R$ 1892.00
+  quartis: recencia 33-146 | freq 1-2 | ticket 798-1998
+  % com 1 pedido: 55.9% | canais: multicanal 14.2% varejo 52.2% ecom 33.6% | idade mediana 37
+  status: NOVO 31.4%, RETIDO 25.6%, REATIVADO 18.8%, NOVO RETORNANTE 13.3%, REATIVADO RETORNANTE 11.0%
+  outliers: {'Normal': 32194, 'Outlier Inferior': 5, 'Outlier Superior': 5}
+
+C3: n=23.077 (25.6%) | receita 69.2% | churn 15.7%
+  medianas: recencia 39 d | frequencia 7 | ticket R$ 963.34 | VA R$ 7260.60
+  quartis: recencia 20-96 | freq 5-11 | ticket 647-1424
+  % com 1 pedido: 0.0% | canais: multicanal 68.8% varejo 16.9% ecom 14.4% | idade mediana 37
+  status: RETIDO 74.1%, NOVO RETORNANTE 13.6%, REATIVADO RETORNANTE 11.7%, NOVO 0.4%, REATIVADO 0.2%
+  outliers: {'Normal': 22102, 'Outlier Superior': 903, 'Outlier Inferior': 72}
+==============================================================================
+PERFIL DOS CLUSTERS - BASE SEM OUTLIERS (88.475 clientes)
+==============================================================================
+
+C1: n=31.633 (35.8%) | receita 7.9% | churn 66.1%
+  medianas: recencia 245 d | frequencia 1 | ticket R$ 528.00 | VA R$ 636.65
+  quartis: recencia 187-314 | freq 1-2 | ticket 339-749
+  % com 1 pedido: 70.3% | canais: multicanal 8.6% varejo 39.5% ecom 51.9% | idade mediana 36
+  status: NOVO 37.3%, RETIDO 34.2%, REATIVADO 15.6%, NOVO RETORNANTE 8.3%, REATIVADO RETORNANTE 4.6%
+  outliers: {'Normal': 31633}
+
+C2: n=31.222 (35.3%) | receita 27.5% | churn 55.2%
+  medianas: recencia 122 d | frequencia 1 | ticket R$ 1548.45 | VA R$ 2096.00
+  quartis: recencia 43-194 | freq 1-2 | ticket 1085-2296
+  % com 1 pedido: 62.9% | canais: multicanal 12.2% varejo 56.9% ecom 30.9% | idade mediana 38
+  status: NOVO 33.8%, RETIDO 26.9%, REATIVADO 19.4%, NOVO RETORNANTE 11.0%, REATIVADO RETORNANTE 9.0%
+  outliers: {'Normal': 31222}
+
+C3: n=25.620 (29.0%) | receita 64.6% | churn 19.0%
+  medianas: recencia 40 d | frequencia 6 | ticket R$ 916.88 | VA R$ 5808.49
+  quartis: recencia 22-95 | freq 4-10 | ticket 631-1319
+  % com 1 pedido: 0.0% | canais: multicanal 63.6% varejo 18.9% ecom 17.5% | idade mediana 37
+  status: RETIDO 69.6%, NOVO RETORNANTE 15.9%, REATIVADO RETORNANTE 13.7%, NOVO 0.5%, REATIVADO 0.4%
+  outliers: {'Normal': 25620}
+
+TRADUCAO DO CENTROIDE (base_total): z -> escala ln -> valor original
+  parametros: recencia mu=149.58 sd=108.35 | lnF mu=0.7726 sd=0.9223 | lnTM mu=6.7609 sd=0.9333
+  C1: z=(+1.01, -0.53, -0.42)
+      recencia: centroide 259 d | mediana 259 | media 259
+      frequencia: ln=0.281 -> exp=1.32 (media geom.) | mediana 1 | media 1.51
+      ticket: ln=6.368 -> exp=R$ 583.10 (media geom.) | mediana R$ 617.26 | media R$ 823.33
+  C2: z=(-0.52, -0.43, +0.41)
+      recencia: centroide 94 d | mediana 83 | media 94
+      frequencia: ln=0.377 -> exp=1.46 (media geom.) | mediana 1 | media 1.62
+      ticket: ln=7.139 -> exp=R$ 1260.75 (media geom.) | mediana R$ 1258.17 | media R$ 1643.95
+  C3: z=(-0.80, +1.40, +0.07)
+      recencia: centroide 63 d | mediana 39 | media 63
+      frequencia: ln=2.066 -> exp=7.89 (media geom.) | mediana 7 | media 10.60
+      ticket: ln=6.825 -> exp=R$ 920.22 (media geom.) | mediana R$ 963.34 | media R$ 1139.81
+
+TRADUCAO DO CENTROIDE (base_sem_outliers): z -> escala ln -> valor original
+  parametros: recencia mu=150.61 sd=107.88 | lnF mu=0.7446 sd=0.8782 | lnTM mu=6.7911 sd=0.7799
+  C1: z=(+0.84, -0.54, -0.75)
+      recencia: centroide 242 d | mediana 245 | media 242
+      frequencia: ln=0.270 -> exp=1.31 (media geom.) | mediana 1 | media 1.48
+      ticket: ln=6.205 -> exp=R$ 495.36 (media geom.) | mediana R$ 528.00 | media R$ 585.09
+  C2: z=(-0.19, -0.49, +0.76)
+      recencia: centroide 130 d | mediana 122 | media 130
+      frequencia: ln=0.313 -> exp=1.37 (media geom.) | mediana 1 | media 1.52
+      ticket: ln=7.383 -> exp=R$ 1607.90 (media geom.) | mediana R$ 1548.45 | media R$ 1928.84
+  C3: z=(-0.81, +1.27, +0.00)
+      recencia: centroide 64 d | mediana 40 | media 64
+      frequencia: ln=1.856 -> exp=6.40 (media geom.) | mediana 6 | media 8.22
+      ticket: ln=6.793 -> exp=R$ 891.87 (media geom.) | mediana R$ 916.88 | media R$ 1056.17
+
+==============================================================================
+K-MEANS x DBSCAN (base total)
+==============================================================================
+db_nome  1 pedido(s)  2 pedido(s)  3 pedido(s)  4+ pedidos  demais clusters  ruido    All
+km                                                                                       
+C1             24146         6087         2692        1573              108    188  34794
+C2             18013         8898         4709         556                9     19  32204
+C3                 0           18         1189       21700               33    137  23077
+All            42159        15003         8590       23829              150    344  90075
+
+% de cada cluster K-means por camada DBSCAN:
+db_nome  1 pedido(s)  2 pedido(s)  3 pedido(s)  4+ pedidos  demais clusters  ruido
+km                                                                                
+C1              69.4         17.5          7.7         4.5              0.3    0.5
+C2              55.9         27.6         14.6         1.7              0.0    0.1
+C3               0.0          0.1          5.2        94.0              0.1    0.6
+
+==============================================================================
+BASE TOTAL x BASE SEM OUTLIERS (clientes comuns)
+==============================================================================
+km_s      1      2      3
+km_t                     
+1     28307   5666    206
+2      3200  25413   3581
+3       126    143  21833
+correspondencia (cluster total -> sem outliers): {1: 1. 2: 2. 3: 3} | concordancia: 85.4% de 88.475 clientes
+
+==============================================================================
+OUTLIERS SUPERIORES DENTRO DO CLUSTER DE RECORRENTES (base total)
+==============================================================================
+cluster de recorrentes: C3 | outliers superiores fora dele: 5
+  Outlier Superior: n=903 (3.9% do cluster) | receita do cluster 26.0% | receita total 18.0%
+     medianas: VA R$ 64596.96 | freq 40 | ticket R$ 1832.12 | recencia 12 d | churn 1.3% | multicanal 93.1%
+  Demais: n=22.174 (96.1% do cluster) | receita do cluster 74.0% | receita total 51.3%
+     medianas: VA R$ 6953.81 | freq 7 | ticket R$ 941.42 | recencia 41 d | churn 16.3% | multicanal 67.8%
+
+[figura] etapa7a_perfil.png

@@ -1,0 +1,80 @@
+==============================================================================
+ETAPA 6B.1 - REGRESSAO LOGISTICA
+==============================================================================
+statsmodels 0.15.0 | Logit por maxima verossimilhanca (Newton-Raphson), sem regularizacao
+
+------------------------------------------------------------------------------
+base_total: treino n=63.052 | convergiu=True | iteracoes=6
+------------------------------------------------------------------------------
+                                      beta      ep        z       p      OR  OR_inf  OR_sup
+const                              -0.3301  0.0400  -8.2537  0.0000  0.7188  0.6646  0.7775
+z_recencia                          0.3845  0.0129  29.8488  0.0000  1.4688  1.4322  1.5064
+z_ln_frequencia                    -0.7686  0.0221 -34.7303  0.0000  0.4637  0.4440  0.4842
+z_ln_ticket                        -0.1763  0.0099 -17.8098  0.0000  0.8384  0.8223  0.8548
+z_idade_ajustada                    0.0695  0.0092   7.5477  0.0000  1.0720  1.0528  1.0915
+idade_valida                       -0.3608  0.0277 -13.0062  0.0000  0.6971  0.6602  0.7361
+canais_cliente=Exclusivo Ecommerce -0.0985  0.0310  -3.1764  0.0015  0.9062  0.8528  0.9630
+canais_cliente=Exclusivo Varejo     0.0944  0.0300   3.1476  0.0016  1.0990  1.0363  1.1656
+status=NOVO                         1.1446  0.0292  39.2292  0.0000  3.1411  2.9665  3.3259
+status=NOVO RETORNANTE              1.0743  0.0303  35.4930  0.0000  2.9280  2.7594  3.1070
+status=REATIVADO                    0.3553  0.0324  10.9629  0.0000  1.4265  1.3388  1.5201
+status=REATIVADO RETORNANTE         0.5774  0.0339  17.0170  0.0000  1.7815  1.6668  1.9040
+recompra90=Janela incompleta        0.1096  0.0470   2.3297  0.0198  1.1158  1.0175  1.2235
+recompra90=Nao recomprou           -0.0658  0.0288  -2.2800  0.0226  0.9363  0.8849  0.9908
+OR em unidades interpretaveis (mesmo coeficiente, reexpresso):
+  Recência       +30 dias   OR=1.112 [1.104; 1.120]  (por desvio-padrao: 1.469)
+  Frequência     ao dobrar  OR=0.561 [0.543; 0.580]  (por desvio-padrao: 0.464)
+  Ticket médio   ao dobrar  OR=0.876 [0.864; 0.889]  (por desvio-padrao: 0.838)
+  Idade          +10 anos   OR=1.062 [1.045; 1.079]  (por desvio-padrao: 1.072)
+TRV global: -2lnL nulo=87.335.7 | -2lnL completo=69.809.9 | G=17.525.8 | gl=13 | p=0.00e+00
+  pseudo-R2 de McFadden (referencia) = 0.2007
+TRV por variavel (modelo completo x modelo sem a variavel):
+  Status do cliente          gl=4  G=  2.610.9  p=0.00e+00  (14.9% do G global)
+  Frequência                 gl=1  G=  1.323.9  p=7.09e-290  (7.6% do G global)
+  Recência                   gl=1  G=    907.9  p=1.90e-199  (5.2% do G global)
+  Ticket médio               gl=1  G=    336.7  p=3.29e-75  (1.9% do G global)
+  Idade (valor e indicador)  gl=2  G=    223.4  p=3.16e-49  (1.3% do G global)
+  Canais do cliente          gl=2  G=     82.8  p=1.06e-18  (0.5% do G global)
+  Recompra em 90 dias        gl=2  G=     29.6  p=3.68e-07  (0.2% do G global)
+Limiar q = proporcao de churn no treino = 0.4830
+  [treino] acuracia=0.7111 precisao=0.6783 recall=0.7641 F1=0.7187 AUC=0.7853 | VP=23271 FP=11035 FN=7183 VN=21563
+  [teste] acuracia=0.7107 precisao=0.6781 recall=0.7634 F1=0.7183 AUC=0.7857 | VP=9964 FP=4729 FN=3088 VN=9242
+
+------------------------------------------------------------------------------
+base_sem_outliers: treino n=61.932 | convergiu=True | iteracoes=6
+------------------------------------------------------------------------------
+                                      beta      ep        z       p      OR  OR_inf  OR_sup
+const                              -0.3280  0.0405  -8.1067  0.0000  0.7203  0.6654  0.7798
+z_recencia                          0.3833  0.0129  29.6716  0.0000  1.4671  1.4304  1.5047
+z_ln_frequencia                    -0.7155  0.0215 -33.3352  0.0000  0.4890  0.4688  0.5100
+z_ln_ticket                        -0.1868  0.0095 -19.7193  0.0000  0.8296  0.8144  0.8452
+z_idade_ajustada                    0.0683  0.0093   7.3813  0.0000  1.0707  1.0514  1.0903
+idade_valida                       -0.3475  0.0279 -12.4590  0.0000  0.7064  0.6689  0.7461
+canais_cliente=Exclusivo Ecommerce -0.1007  0.0311  -3.2323  0.0012  0.9042  0.8507  0.9612
+canais_cliente=Exclusivo Varejo     0.1251  0.0302   4.1469  0.0000  1.1333  1.0682  1.2023
+status=NOVO                         1.1505  0.0294  39.1661  0.0000  3.1597  2.9829  3.3470
+status=NOVO RETORNANTE              1.0674  0.0304  35.1217  0.0000  2.9077  2.7395  3.0861
+status=REATIVADO                    0.3737  0.0325  11.4809  0.0000  1.4531  1.3633  1.5488
+status=REATIVADO RETORNANTE         0.5824  0.0340  17.1523  0.0000  1.7903  1.6751  1.9135
+recompra90=Janela incompleta        0.1197  0.0473   2.5276  0.0115  1.1271  1.0272  1.2367
+recompra90=Nao recomprou           -0.0686  0.0290  -2.3643  0.0181  0.9337  0.8821  0.9883
+OR em unidades interpretaveis (mesmo coeficiente, reexpresso):
+  Recência       +30 dias   OR=1.112 [1.105; 1.120]  (por desvio-padrao: 1.467)
+  Frequência     ao dobrar  OR=0.568 [0.550; 0.588]  (por desvio-padrao: 0.489)
+  Ticket médio   ao dobrar  OR=0.847 [0.833; 0.861]  (por desvio-padrao: 0.830)
+  Idade          +10 anos   OR=1.061 [1.044; 1.078]  (por desvio-padrao: 1.071)
+TRV global: -2lnL nulo=85.808.1 | -2lnL completo=69.161.8 | G=16.646.3 | gl=13 | p=0.00e+00
+  pseudo-R2 de McFadden (referencia) = 0.1940
+TRV por variavel (modelo completo x modelo sem a variavel):
+  Status do cliente          gl=4  G=  2.572.9  p=0.00e+00  (15.5% do G global)
+  Frequência                 gl=1  G=  1.200.8  p=4.01e-263  (7.2% do G global)
+  Recência                   gl=1  G=    897.4  p=3.63e-197  (5.4% do G global)
+  Ticket médio               gl=1  G=    391.0  p=5.06e-87  (2.3% do G global)
+  Idade (valor e indicador)  gl=2  G=    206.7  p=1.29e-45  (1.2% do G global)
+  Canais do cliente          gl=2  G=    111.4  p=6.30e-25  (0.7% do G global)
+  Recompra em 90 dias        gl=2  G=     33.6  p=5.15e-08  (0.2% do G global)
+Limiar q = proporcao de churn no treino = 0.4861
+  [treino] acuracia=0.7076 precisao=0.6788 recall=0.7564 F1=0.7155 AUC=0.7813 | VP=22770 FP=10773 FN=7335 VN=21054
+  [teste] acuracia=0.7090 precisao=0.6796 recall=0.7593 F1=0.7172 AUC=0.7819 | VP=9797 FP=4619 FN=3106 VN=9021
+
+[figura] etapa6b1_razoes_chance.png

@@ -1,0 +1,85 @@
+==============================================================================
+BASE: base_total  (90.075 clientes)
+==============================================================================
+[1] Checagens
+    recencia           ausentes=     0  min=      0.0000  <=0:    115
+    Frequencia_total   ausentes=     0  min=      1.0000  <=0:      0
+    TM_total           ausentes=     0  min=      0.0009  <=0:      0
+    VA_bruto_total     ausentes=     0  min=      0.0100  <=0:      0
+    recencia == 0 (compra em 31/12): 115
+[2] Assimetria antes e depois do ln
+    variavel            original   apos ln
+    recencia                0.34        --
+    Frequencia_total        9.29      1.14
+    TM_total                4.23     -2.97
+    VA_bruto_total         13.32     -0.65  (referencia; fora do espaco)
+[3] Parametros do escore-z (escala apos ln, quando aplicavel)
+    recencia           media=  149.5795  desvio=  108.3548  | conferencia: media_z=+9.1e-17 desvio_z=1.0000
+    Frequencia_total   media=    0.7726  desvio=    0.9223  | conferencia: media_z=+8.6e-17 desvio_z=1.0000
+    TM_total           media=    6.7609  desvio=    0.9333  | conferencia: media_z=+1.1e-15 desvio_z=1.0000
+    amplitude z: recencia=[-1.38; 1.99]  Frequencia_total=[-0.84; 5.27]  TM_total=[-14.75; 3.87]
+[4] Correlacao no espaco final
+    Pearson (relevante para a distancia euclidiana):
+                      recencia  Frequencia_total  TM_total
+    recencia              1.00            -0.450    -0.140
+    Frequencia_total     -0.45             1.000     0.054
+    TM_total             -0.14             0.054     1.000
+    Spearman:
+                      recencia  Frequencia_total  TM_total
+    recencia             1.000            -0.442    -0.170
+    Frequencia_total    -0.442             1.000     0.088
+    TM_total            -0.170             0.088     1.000
+    Pearson max |r| fora da diagonal: 0.450
+[5] Identidade ln VA = ln F + ln TM
+    |residuo| max = 4.00e-14   clientes com |residuo| > 1e-6: 0
+    Pearson(ln VA, ln F + ln TM) = 1.000000
+    Pearson(ln VA, ln F) = 0.722   Pearson(ln VA, ln TM) = 0.730
+[6] Estrutura discreta do espaco
+    clientes com F = 1 (ln F = 0): 42.264 (46.9%)
+    valores distintos: recencia=366  F=138  TM=42426
+    pontos distintos no espaco 3D: 81.131   clientes em pontos repetidos: 14.215 (15.8%)
+    [matriz] matriz_5a_base_total.csv  (90075 x 4)
+
+==============================================================================
+BASE: base_sem_outliers  (88.475 clientes)
+==============================================================================
+[1] Checagens
+    recencia           ausentes=     0  min=      0.0000  <=0:    110
+    Frequencia_total   ausentes=     0  min=      1.0000  <=0:      0
+    TM_total           ausentes=     0  min=      4.0488  <=0:      0
+    VA_bruto_total     ausentes=     0  min=     98.0000  <=0:      0
+    recencia == 0 (compra em 31/12): 110
+[2] Assimetria antes e depois do ln
+    variavel            original   apos ln
+    recencia                0.33        --
+    Frequencia_total        4.80      1.03
+    TM_total                4.26     -0.24
+    VA_bruto_total          3.27      0.18  (referencia; fora do espaco)
+[3] Parametros do escore-z (escala apos ln, quando aplicavel)
+    recencia           media=  150.6069  desvio=  107.8811  | conferencia: media_z=+1.2e-16 desvio_z=1.0000
+    Frequencia_total   media=    0.7446  desvio=    0.8782  | conferencia: media_z=+5.1e-17 desvio_z=1.0000
+    TM_total           media=    6.7911  desvio=    0.7799  | conferencia: media_z=+1.0e-15 desvio_z=1.0000
+    amplitude z: recencia=[-1.40; 1.99]  Frequencia_total=[-0.85; 4.78]  TM_total=[-6.91; 4.59]
+[4] Correlacao no espaco final
+    Pearson (relevante para a distancia euclidiana):
+                      recencia  Frequencia_total  TM_total
+    recencia             1.000            -0.439    -0.158
+    Frequencia_total    -0.439             1.000     0.039
+    TM_total            -0.158             0.039     1.000
+    Spearman:
+                      recencia  Frequencia_total  TM_total
+    recencia             1.000            -0.428    -0.160
+    Frequencia_total    -0.428             1.000     0.071
+    TM_total            -0.160             0.071     1.000
+    Pearson max |r| fora da diagonal: 0.439
+[5] Identidade ln VA = ln F + ln TM
+    |residuo| max = 1.78e-15   clientes com |residuo| > 1e-6: 0
+    Pearson(ln VA, ln F + ln TM) = 1.000000
+    Pearson(ln VA, ln F) = 0.759   Pearson(ln VA, ln TM) = 0.680
+[6] Estrutura discreta do espaco
+    clientes com F = 1 (ln F = 0): 41.898 (47.4%)
+    valores distintos: recencia=366  F=77  TM=41198
+    pontos distintos no espaco 3D: 79.578   clientes em pontos repetidos: 14.130 (16.0%)
+    [matriz] matriz_5a_base_sem_outliers.csv  (88475 x 4)
+
+[figura] etapa5a_transformacoes.png

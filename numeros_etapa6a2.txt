@@ -1,0 +1,68 @@
+==============================================================================
+ETAPA 6A.2 - DBSCAN
+==============================================================================
+scikit-learn 1.7.2 | MinPts = 4 (Ester et al., 1996)
+
+--- base_total (90.075 clientes) ---
+k-dist (4o vizinho): mediana=0.020 p95=0.099 p99=0.219 max=2.655
+eps escolhido = 0.3 | clusters = 25 | ruido = 0.38% (344)
+  5 maiores clusters: [42159, 23829, 15003, 8590, 22] | clusters com < 100 clientes: 21
+  cluster 6: n=42159 | frequencia (4 = 4+): 1: 100.0%
+  cluster 0: n=23829 | frequencia (4 = 4+): 4: 100.0%
+  cluster 5: n=15003 | frequencia (4 = 4+): 2: 100.0%
+  cluster 3: n=8590 | frequencia (4 = 4+): 3: 100.0%
+  ruido por grupo: {'Outlier Inferior': 187, 'Normal': 112, 'Outlier Superior': 45}
+  top 1% de VA: 901 | no ruido: 45 | no cluster de 4+ pedidos: 854
+  distancia entre niveis consecutivos de frequencia (z): 1->2: 0.752, 2->3: 0.440, 3->4: 0.312, 4->5: 0.242, 5->6: 0.198
+  silhueta media (exata, sem ruido): 0.0532
+  Sensibilidade (clusters | ruido% | % do maior cluster):
+    MinPts= 4  eps=0.10:  238 |  3.6% | 46.4%  ;  eps=0.20:   48 |  0.9% | 46.8%  ;  eps=0.30:   25 |  0.4% | 46.8%  ;  eps=0.40:   18 |  0.2% | 46.8%
+    MinPts=16  eps=0.10:   54 | 12.9% | 45.9%  ;  eps=0.20:    6 |  3.0% | 46.7%  ;  eps=0.30:    9 |  1.2% | 46.8%  ;  eps=0.40:    5 |  0.6% | 46.8%
+  [rotulos] rotulos_dbscan_base_total.csv
+  Analise por camada de frequencia (MinPts = 4):
+    1 pedido   n= 42264 eps=0.050: clusters= 102 ruido= 1.4% maior= 96.4% seguintes=[39, 37, 34]
+    1 pedido   n= 42264 eps=0.100: clusters=  27 ruido= 0.5% maior= 98.9% seguintes=[27, 26, 17] <- eps do vale
+    1 pedido   n= 42264 eps=0.150: clusters=  16 ruido= 0.2% maior= 99.4% seguintes=[31, 22, 14]
+    2 pedidos  n= 15068 eps=0.055: clusters=  74 ruido= 5.3% maior= 91.1% seguintes=[47, 29, 16]
+    2 pedidos  n= 15068 eps=0.110: clusters=  33 ruido= 1.6% maior= 97.2% seguintes=[18, 14, 9] <- eps do vale
+    2 pedidos  n= 15068 eps=0.165: clusters=  14 ruido= 0.7% maior= 98.4% seguintes=[32, 14, 12]
+    3 pedidos  n=  8638 eps=0.060: clusters=  76 ruido= 6.6% maior= 85.0% seguintes=[47, 36, 36]
+    3 pedidos  n=  8638 eps=0.120: clusters=  17 ruido= 2.0% maior= 96.8% seguintes=[17, 11, 9] <- eps do vale
+    3 pedidos  n=  8638 eps=0.180: clusters=   9 ruido= 1.1% maior= 98.5% seguintes=[6, 6, 5]
+    4 ou mais  n= 24105 eps=0.125: clusters=  83 ruido= 6.8% maior= 31.9% seguintes=[5258, 3438, 2509]
+    4 ou mais  n= 24105 eps=0.250: clusters=  14 ruido= 1.4% maior= 98.0% seguintes=[51, 19, 12] <- eps do vale
+    4 ou mais  n= 24105 eps=0.375: clusters=   7 ruido= 0.6% maior= 99.3% seguintes=[7, 5, 5]
+
+--- base_sem_outliers (88.475 clientes) ---
+k-dist (4o vizinho): mediana=0.021 p95=0.098 p99=0.200 max=0.883
+eps escolhido = 0.3 | clusters = 9 | ruido = 0.18% (163)
+  5 maiores clusters: [41894, 22846, 14903, 8586, 55] | clusters com < 100 clientes: 5
+  cluster 4: n=41894 | frequencia (4 = 4+): 1: 100.0%
+  cluster 0: n=22846 | frequencia (4 = 4+): 4: 100.0%
+  cluster 3: n=14903 | frequencia (4 = 4+): 2: 100.0%
+  cluster 1: n=8586 | frequencia (4 = 4+): 3: 100.0%
+  ruido por grupo: {'Normal': 163}
+  top 1% de VA: 885 | no ruido: 23 | no cluster de 4+ pedidos: 859
+  distancia entre niveis consecutivos de frequencia (z): 1->2: 0.789, 2->3: 0.462, 3->4: 0.328, 4->5: 0.254, 5->6: 0.208
+  silhueta media (exata, sem ruido): 0.0613
+  Sensibilidade (clusters | ruido% | % do maior cluster):
+    MinPts= 4  eps=0.10:  238 |  3.5% | 47.1%  ;  eps=0.20:   55 |  0.6% | 47.3%  ;  eps=0.30:    9 |  0.2% | 47.4%  ;  eps=0.40:    6 |  0.1% | 47.4%
+    MinPts=16  eps=0.10:   72 | 13.9% | 46.4%  ;  eps=0.20:    7 |  2.9% | 47.2%  ;  eps=0.30:    5 |  1.0% | 47.3%  ;  eps=0.40:    6 |  0.3% | 47.3%
+  [rotulos] rotulos_dbscan_base_sem_outliers.csv
+  Analise por camada de frequencia (MinPts = 4):
+    1 pedido   n= 41898 eps=0.050: clusters=  95 ruido= 1.4% maior= 96.6% seguintes=[46, 39, 37]
+    1 pedido   n= 41898 eps=0.100: clusters=  19 ruido= 0.3% maior= 99.4% seguintes=[23, 17, 16] <- eps do vale
+    1 pedido   n= 41898 eps=0.150: clusters=   8 ruido= 0.1% maior= 99.8% seguintes=[23, 12, 6]
+    2 pedidos  n= 14910 eps=0.055: clusters=  95 ruido= 5.2% maior= 90.0% seguintes=[38, 36, 29]
+    2 pedidos  n= 14910 eps=0.110: clusters=  23 ruido= 1.2% maior= 97.9% seguintes=[14, 11, 9] <- eps do vale
+    2 pedidos  n= 14910 eps=0.165: clusters=  12 ruido= 0.3% maior= 99.2% seguintes=[15, 13, 9]
+    3 pedidos  n=  8601 eps=0.060: clusters=  92 ruido= 8.1% maior= 83.1% seguintes=[57, 34, 23]
+    3 pedidos  n=  8601 eps=0.120: clusters=  16 ruido= 2.0% maior= 96.9% seguintes=[16, 10, 9] <- eps do vale
+    3 pedidos  n=  8601 eps=0.180: clusters=  10 ruido= 0.7% maior= 98.7% seguintes=[12, 6, 4]
+    4 ou mais  n= 23066 eps=0.125: clusters= 106 ruido= 6.9% maior= 29.4% seguintes=[5163, 3382, 2450]
+    4 ou mais  n= 23066 eps=0.250: clusters=  17 ruido= 1.1% maior= 75.1% seguintes=[5361, 41, 12] <- eps do vale
+    4 ou mais  n= 23066 eps=0.375: clusters=   3 ruido= 0.3% maior= 99.7% seguintes=[4, 4]
+
+[figura] etapa6a2_kdist.png
+[figura] etapa6a2_dbscan_global.png
+[figura] etapa6a2_dbscan_camadas.png

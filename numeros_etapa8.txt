@@ -1,0 +1,86 @@
+==============================================================================
+ETAPA 8 - INTEGRACAO CLUSTERS x CHURN x MODELOS (base total)
+==============================================================================
+receita 2024: R$ 416,9 mi | valor das clientes que saíram: R$ 85,7 mi (20,6%)
+
+1) VALOR PERDIDO POR CLUSTER
+  C1: n=34.794 churn=65,9% saíram=22.928 valor perdido=R$ 24,7 mi (28,8% do perdido) mediana VA perdidas=R$ 704
+  C2: n=32.204 churn=52,6% saíram=16.951 valor perdido=R$ 39,1 mi (45,6% do perdido) mediana VA perdidas=R$ 1.598
+  C3: n=23.077 churn=15,7% saíram=3.627 valor perdido=R$ 21,9 mi (25,6% do perdido) mediana VA perdidas=R$ 4.357
+
+2) DESEMPENHO POR CLUSTER NO TESTE (limiar q = churn do treino)
+  teste n=27.023 | q=0.4830
+  -- logística
+    C1: n=10.415 churn=66,2% recall=91,3% precisão=70,6% recall_valor=82,0% sinalizadas=85,5%
+    C2: n=9.724 churn=52,2% recall=71,1% precisão=63,7% recall_valor=54,6% sinalizadas=58,2%
+    C3: n=6.884 churn=15,8% recall=6,2% precisão=54,5% recall_valor=1,6% sinalizadas=1,8%
+  -- árvore 1EP
+    C1: n=10.415 churn=66,2% recall=91,7% precisão=70,3% recall_valor=82,3% sinalizadas=86,3%
+    C2: n=9.724 churn=52,2% recall=72,2% precisão=63,1% recall_valor=56,9% sinalizadas=59,7%
+    C3: n=6.884 churn=15,8% recall=12,1% precisão=51,0% recall_valor=3,9% sinalizadas=3,8%
+
+3) C2 - STATUS E CANAL (ação 1)
+                          n  churn
+status                            
+NOVO                  10105   71.5
+NOVO RETORNANTE        4278   51.3
+REATIVADO              6046   54.1
+REATIVADO RETORNANTE   3527   40.1
+RETIDO                 8248   34.5
+canais_cliente        Exclusivo Ecommerce  Exclusivo Varejo  Multicanal
+status                                                                 
+NOVO                                 68.1              73.3         NaN
+NOVO RETORNANTE                      53.6              52.8        46.3
+REATIVADO                            51.7              55.5         NaN
+REATIVADO RETORNANTE                 42.3              41.6        35.9
+RETIDO                               34.4              36.9        31.1
+canais_cliente        Exclusivo Ecommerce  Exclusivo Varejo  Multicanal
+status                                                                 
+NOVO                                 3389              6716           0
+NOVO RETORNANTE                      1432              1700        1146
+REATIVADO                            2274              3772           0
+REATIVADO RETORNANTE                 1142              1285        1100
+RETIDO                               2583              3347        2318
+  NOVO C2 Exclusivo Ecommerce: n=3.389 churn=68,1% valor perdido=R$ 2,8 mi TM mediano=R$ 967
+  NOVO C2 Exclusivo Varejo: n=6.716 churn=73,3% valor perdido=R$ 8,7 mi TM mediano=R$ 1.326
+  NOVO C2 total: n=10.105 valor perdido=R$ 11,5 mi (13,4% do perdido total)
+  C2 Exclusivo Ecommerce: n=10.820 churn=52,0%
+  C2 Exclusivo Varejo: n=16.820 churn=57,6%
+  C2 Multicanal: n=4.564 churn=36,1%
+
+4) C3 - RECÊNCIA E FREQUÊNCIA (ação 2)
+             n  churn
+recencia             
+0-30      7828   10.4
+31-60     6503   12.3
+61-90     2492   18.5
+91-120    2202   20.8
+121-180   2808   25.1
+>180      1244   31.0
+  >60 dias: n=8.746 (37,9% do C3) churn=23,0% | <=60: churn=11,3%
+  recência mediana: saíram 72 d | ficaram 35 d
+  frequência mediana: saíram 5 | ficaram 7
+                     n  churn  receita_pct
+Frequencia_total                          
+2-3               1209   41.0          0.4
+4-5               7119   23.9          8.7
+6-10              8189   14.0         17.9
+11-20             4250    5.7         16.9
+>20               2310    1.6         25.3
+
+5) CLIENTES DE ALTÍSSIMO VALOR - Outlier Superior (ação 3)
+  n=908 | no C3: 903 | receita 18,1% | churn 1,3% (12 clientes, R$ 0,9 mi)
+  F mediana 40 | TM mediano R$ 1.845 | VA mediano R$ 64.582
+  canais: {'Multicanal': 845, 'Exclusivo Ecommerce': 35, 'Exclusivo Varejo': 28} | favorito: {'VAREJO': 673, 'ECOMMERCE': 235}
+  frequência física mediana 25 | % VA em loja física 65,8%
+  recência mediana: saíram 58 d | ficaram 12 d | >30 d: 21,1% das clientes
+
+6) C1 (ação 4)
+              n  churn
+recencia              
+<=180      3933   64.1
+181-240   10561   63.1
+241-300    9799   65.0
+>300      10501   70.2
+  TM mediano R$ 617 | VA mediano R$ 800 | canais {'Exclusivo Ecommerce': 47.8, 'Exclusivo Varejo': 42.8, 'Multicanal': 9.3}
+  status: {'RETIDO': 36.5, 'NOVO': 36.2, 'REATIVADO': 14.6, 'NOVO RETORNANTE': 8.1, 'REATIVADO RETORNANTE': 4.5}
